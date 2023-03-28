@@ -73,6 +73,7 @@
 }
 
 .inputs input {
+  width: 100%;
   padding: 7px;
   margin: 10px;
   border-radius: 10px;
@@ -81,6 +82,15 @@
   outline: none;
   background: rgba(64, 64, 64, 0.2);
   color: grey;
+}
+.input:-webkit-autofill,
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  border: 1px solid #523928;
+  -webkit-text-fill-color: grey;
+  -webkit-box-shadow: 0 0 0px 1000px #01010195 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .inputs .input:focus {
@@ -166,22 +176,4 @@
 .switch:hover {
   color: grey;
   cursor: pointer;
-}
-
-.fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 1s;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 1s;
 }
