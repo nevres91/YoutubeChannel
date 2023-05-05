@@ -1,3 +1,7 @@
+# API Key
+
+AIzaSyAX9xW4Rk-StAHFohpIT8AeGCrqY-uUJ8k
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

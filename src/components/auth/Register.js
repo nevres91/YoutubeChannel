@@ -1,10 +1,13 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import React, { Fragment, useState } from 'react'
 import auth from '../../firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Functions passed in as props in Dashboard!
 
-const Register = ({ backgroundChange, backgroundRevert, loginShow }) => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,7 +16,6 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => {
   });
 
   const { name, email, password, password2 } = formData;
-
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
   // The onChange event handler is a callback function that updates the formData state object. It uses the spread operator ... to create a new object that copies all the properties of the current formData object and overwrites the value of the property with the name attribute of the input field that triggered the event with its new value.
 
@@ -21,7 +23,12 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
+        updateProfile(auth.currentUser, {
+          displayName: name
+        })
         console.log(userCredentials)
+        localStorage.setItem('user', JSON.stringify(userCredentials))
+        navigate('/landing');
       }).catch((error) => {
         console.log(error)
       })

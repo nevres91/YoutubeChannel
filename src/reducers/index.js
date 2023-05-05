@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
+import { login, logout } from '../slices/auth';
+import authReducer from '../slices/auth';
 
 
-export default combineReducers(
+const rootReducer = combineReducers(
   {
-    // Object that will have any reducers that we create
+    auth: authReducer,
   })
+
+export default rootReducer;

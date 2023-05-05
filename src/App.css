@@ -38,6 +38,9 @@
   font-size: 16px;
   transition: all 0.1s ease-in-out;
 }
+.navbar li h3 {
+  color: white;
+}
 .navbar li a:hover {
   color: #bf9052;
   font-size: 17px;
@@ -46,6 +49,7 @@
 .navbar h1 {
   margin-top: 0.6%;
   cursor: pointer;
+  caret-color: transparent;
 }
 .navbar h1 a {
   color: rgb(179, 177, 177);
@@ -58,11 +62,12 @@
   color: red;
 }
 
-/* ----------LANDING PAGE----------- */
+/* ----------DASHBOARD PAGE----------- */
 
 .inputs {
   display: flex;
   flex-direction: column;
+  caret-color: transparent;
 }
 
 .inputs .btn {
@@ -95,6 +100,7 @@
 
 .inputs .input:focus {
   background: rgba(93, 83, 83, 0.4);
+  caret-color: grey;
 }
 
 .inputs p {
@@ -136,6 +142,7 @@
 .landing-inner h1 {
   color: white;
   font-size: 5rem;
+  caret-color: transparent;
 }
 .landing-inner h1 i {
   color: white;
@@ -157,6 +164,7 @@
   margin-top: 20px;
   margin-right: 10px;
   transition: all 0.5s ease-in-out;
+  caret-color: transparent;
 }
 
 .landing-title:hover .wheel-icon {
@@ -176,4 +184,176 @@
 .switch:hover {
   color: grey;
   cursor: pointer;
+}
+
+/* ----------LANDING PAGE----------- */
+
+.container {
+  background: url("./img/10.jpg") no-repeat center center/cover;
+  /* background: linear-gradient(90deg, #ffffff, #adadad, #706f6f, #0d0c0c); */
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 1400px;
+  padding-top: 70px;
+}
+
+.landing-overlay {
+  background: rgba(0, 0, 0, 0.668);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  overflow: auto;
+}
+
+.cards-menu {
+  display: flex;
+  margin: auto;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: center;
+}
+.menu-div {
+  margin: auto;
+  width: 100%;
+}
+
+.search-btn {
+  background-color: rgba(133, 113, 113, 0.384);
+  height: 100%;
+  border-radius: 0 15px 15px 0;
+  border: none;
+  padding-right: 10px;
+  color: grey;
+  cursor: pointer;
+  caret-color: transparent;
+  transform: translateX(-3px);
+}
+
+.search {
+  margin-right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px 0 0 15px;
+  padding: 10px;
+  background-color: rgba(133, 113, 113, 0.384);
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  max-width: 1065px;
+  transform: translateX(-3px);
+  /* border: 0.5px solid rgba(131, 130, 130, 0.639); */
+  caret-color: transparent;
+}
+
+@media (max-width: 1119px) {
+  .search {
+    max-width: 695px;
+  }
+}
+@media (max-width: 749px) {
+  .search {
+    max-width: 322px;
+  }
+}
+
+.search:focus {
+  /* outline: 0.5px rgba(224, 212, 212, 0.384) solid; */
+  background-color: rgba(133, 113, 113, 0.499);
+  caret-color: white;
+}
+.search:focus + button {
+  /* outline: 0.5px rgba(224, 212, 212, 0.384) solid; */
+  background-color: rgba(133, 113, 113, 0.499);
+}
+
+.card {
+  height: 250px;
+  max-height: 250px;
+  max-width: 350px;
+  min-width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  flex-basis: 30%;
+  position: relative;
+  box-sizing: border-box;
+  justify-content: center;
+  caret-color: transparent;
+  color: rgb(194, 191, 191);
+}
+
+.card-title {
+  margin-top: 8px;
+}
+
+.card-info {
+  display: flex;
+}
+.card-info p {
+  margin-right: 15px;
+  margin-top: 10px;
+  color: grey;
+  opacity: 0.8;
+}
+
+.thumbnail {
+  height: 70%;
+  max-height: 175px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+  overflow: hidden;
+}
+.background {
+  background: url("./img/2.jpg") no-repeat center center/cover;
+  height: 100%;
+  width: 100%;
+  transition: all 150ms ease-in-out;
+  opacity: 0.9;
+}
+.background:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+
+@media (max-width: 1073px) {
+  .card {
+    flex-basis: 33.33%;
+  }
+}
+@media (max-width: 815px) {
+  .card {
+    flex-basis: 50%;
+  }
+}
+@media (max-width: 555px) {
+  .card {
+    flex-basis: 100%;
+  }
 }
