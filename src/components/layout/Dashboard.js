@@ -5,6 +5,7 @@ import Register from '../auth/Register';
 import { useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { getRedirectResult } from 'firebase/auth';
+import Spinner from '../Spinner';
 
 const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -37,6 +38,7 @@ const Dashboard = () => {
     // Get redirect results from sign in with GOOGLE
     const redirectresults = async () => {
       setLoading(true);
+
       const result = await getRedirectResult(auth);
       if (result) {
         const user = result.user;
@@ -53,6 +55,7 @@ const Dashboard = () => {
       } else {
         console.log('failed')
       }
+
       setLoading(false);
     }
     // Sign in with Email and Password
@@ -69,6 +72,10 @@ const Dashboard = () => {
     redirectresults();
   }, []);
 
+  if (loading) {
+    return <Spinner />
+  }
+
   return (
     <div className='landing' >
       <div className="overlay"  >
@@ -77,11 +84,11 @@ const Dashboard = () => {
             <i className='wheel-icon' />
             <h1 className='title'>  Dirty Riders</h1>
           </div>
-          {loading ? (<p>Loading...</p>) : (loginForm ? (
+          {loginForm ? (
             <Login backgroundChange={backgroundChange} backgroundRevert={backgroundRevert} registerShow={registerShow} />
           ) : (
             <Register backgroundChange={backgroundChange} backgroundRevert={backgroundRevert} loginShow={loginShow} />
-          ))}
+          )}
         </div>
       </div>
     </div >

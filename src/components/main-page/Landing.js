@@ -5,10 +5,14 @@ import auth from '../../firebase'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { loadUser } from '../../slices/auth'
+import { useGetVideos } from '../../actions/videos';
+import getComents from '../../actions/coments';
 
 
 
 const Landing = () => {
+
+  const { getVideos } = useGetVideos();
 
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
@@ -29,6 +33,7 @@ const Landing = () => {
           dispayName: user.displayName,
           email: user.email
         }))
+        getVideos();
       } else {
         setUser(null);
         localStorage.removeItem("user");

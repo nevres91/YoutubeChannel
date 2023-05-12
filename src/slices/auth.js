@@ -13,6 +13,7 @@ const initialState = {
 // Sign in with GOOGLE using a redirect.
 export const googleLogin = createAsyncThunk("auth/googleLogin", async () => {
   const provider = new GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
   // Start a sign in process for an unauthenticated user.
   provider.addScope('profile');
   provider.addScope('email');
@@ -44,6 +45,19 @@ const authSlice = createSlice({
       state.loading = true;
       state.user = null
     },
+    extraReducers: {
+      [googleLogin.fulfilled]: (state, action) => {
+        state.user = action.payload;
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.error = null;
+      },
+      [googleLogin.rejected]: (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      },
+
+    }
   }
 })
 
