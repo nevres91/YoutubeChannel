@@ -15,7 +15,7 @@ const videosSlice = createSlice({
   initialState,
   reducers: {
     fetchVideos: (state, action) => {
-      state.videos = action.payload.videos;
+      state.videos = state.videos ? state.videos.concat(action.payload.videos) : action.payload.videos;
       state.nextPageToken = action.payload.nextPageToken;
       state.loading = false;
       state.error = null;
@@ -26,7 +26,7 @@ const videosSlice = createSlice({
       state.error = null
     },
     fetchComments: (state, action) => {
-      state.comments = action.payload
+      state.comments = state.comments ? state.comments.concat(action.payload) : action.payload;
     }
   }
 })

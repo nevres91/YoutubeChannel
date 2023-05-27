@@ -17,9 +17,12 @@ import { Route, useNavigate } from "react-router-dom";
 const PrivateRoute = ({
   component: Component
 }) => {
-  const auth = useSelector(state => state.firebase.auth);
+  const user = useSelector(state => state.auth.user);
   const navigate = useNavigate();
-  if (auth) return <Component />;
+  if (user) {
+    console.log(user)
+    return <Component />;
+  }
   return navigate('/');
 };
 

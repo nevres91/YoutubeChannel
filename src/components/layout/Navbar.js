@@ -64,7 +64,7 @@ const Navbar = () => {
         <li><h3>User {currentUser?.user.displayName} is logged in </h3></li>
         <li><a href="/#">Register</a></li>
         <li><Link onClick={logOut} href="/#">Logout</Link></li>
-        <li><a href="/#">Bikes</a></li>
+        <li><Link onClick={logOut} to='/bikes'>Bikes</Link></li>
       </ul>
     </nav>
   ) : (<nav className='navbar'>
@@ -73,7 +73,7 @@ const Navbar = () => {
       <li><h3>You're currently not logged in, please consider registering.</h3></li>
       <li><a href="/#">Register</a></li>
       <li><Link onClick={logOut} href="/#">Logout</Link></li>
-      <li><a href="/#">Bikes</a></li>
+      <li><Link onClick={logOut} to='/bikes'>Bikes</Link></li>
     </ul>
   </nav>)
 }

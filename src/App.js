@@ -8,6 +8,7 @@ import { Fragment } from 'react';
 import { store } from './store'
 import PrivateRoute from './routing/PrivateRoute';
 import Protected from './Protected';
+import Bikes from './components/Bikes';
 function App() {
   return (
     <Provider store={store}>
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Dashboard />} />
             <Route exact path='/landing' element={<Landing />} />
+            <Route exact path='/bikes' element={<Bikes />} />
             <Route exact path='/protected' element={<PrivateRoute component={Protected} />} />
           </Routes>
         </Fragment>
