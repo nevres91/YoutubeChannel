@@ -63,11 +63,22 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
           onChange={e => onChange(e)}
         />
         <input type="submit" className='btn' value='Login' onFocus={backgroundChange} onBlur={backgroundRevert} />
-        <div className="question">
-          <p>Not a member?</p>  <div className='switch' onClick={registerShow}>Register</div>
+        <div className="google-div">
+          <p>Or log in with</p>
+          <div className='google-span' onClick={loginWithGoogle}>
+            <span className="span-g">G</span>
+            <span className="span-o-red">o</span>
+            <span className="span-o-yellow">o</span>
+            <span className="span-g">g</span>
+            <span className="span-l">l</span>
+            <span className="span-o-red">e</span>
+          </div>
+          {/* <div className='google-button' onClick={loginWithGoogle}>
+
+          </div> */}
         </div>
         <div className="question">
-          <p>Log in with</p>  <div className='switch' onClick={loginWithGoogle}>Google</div>
+          <p>Not a member?</p>  <div className='switch' onClick={registerShow}>Register</div>
         </div>
       </form>
     </Fragment>

@@ -83,7 +83,8 @@ const Dashboard = () => {
         <div className="landing-inner">
           <div className="landing-title">
             <i className='wheel-icon' />
-            <h1 className='title'>  Dirty Riders</h1>
+            <h1 className='title h-1'>  Dirty Riders</h1>
+            <span className='title h-2'>  Dirty Riders</span>
           </div>
           {loginForm ? (
             <Login backgroundChange={backgroundChange} backgroundRevert={backgroundRevert} registerShow={registerShow} />
