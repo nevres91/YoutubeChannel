@@ -59,9 +59,15 @@ const Landing = () => {
         <div className="inner-container">
           <div className='menu-div'>
             <CardsMenu />
-            <h2>Hello {user.displayName}</h2>
+            {/* <h2>Hello {user.displayName}</h2> */}
           </div>
+          {/* <div className="landing-content"> */}
+          {/* <div className="landing-sidebar"></div> */}
+          {/* <div className="landing-cards"> */}
           <Cards />
+          {/* <div className="card-simulation"></div> */}
+          {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

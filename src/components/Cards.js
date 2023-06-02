@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useGetVideos } from '../actions/videos';
 import request from "../api";
 import NextPageSpinner from './NextPageSpinner';
+import CardSimulation from './CardSimulation';
 
 
 
@@ -50,18 +51,19 @@ const Cards = () => {
 
   return (
     <div className='cards'>
+
       <InfiniteScroll
         dataLength={videoData.length}
         next={fetchNextVideos}
         hasMore={Boolean(nextPageToken)}
         loader={<NextPageSpinner />}
-        height={785}
+        height={'100%'}
         endMessage={
           <div className='end-message'>
             <h3>No more videos to load!</h3>
           </div>
         }
-        style={{ overflow: 'auto', display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}
+
       >
         {!videoData.length ? (<p>Loading...</p>) : (videoData.map((video => {
           const thumbnail = video.snippet.thumbnails.medium.url

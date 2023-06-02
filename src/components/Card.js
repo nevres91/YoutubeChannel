@@ -18,13 +18,15 @@ const Card = ({ videoId, thumbnail, title, viewCount, commentCount, likeCount, d
           <span className='duration'>{formatedDuration}</span>
         </div>
       </div>
-      <div className="card-title">
-        <h3>{title}</h3>
-      </div>
-      <div className="card-info">
-        <p><i className="fa-solid fa-eye"></i> {viewCount} Views </p>
-        <p><i className="fa-solid fa-comment"></i> {commentCount} comments</p>
-        <p><i className="fa-solid fa-thumbs-up"></i> {likeCount} likes</p>
+      <div className="card-details">
+        <div className="card-title">
+          <h3>{title}</h3>
+        </div>
+        <div className="card-info">
+          <p><i className="fa-solid fa-eye"></i> {viewCount} Views </p>
+          <p><i className="fa-solid fa-comment"></i> {commentCount} comments</p>
+          <p><i className="fa-solid fa-thumbs-up"></i> {likeCount} likes</p>
+        </div>
       </div>
     </a>
   )
