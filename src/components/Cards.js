@@ -65,7 +65,7 @@ const Cards = () => {
         }
 
       >
-        {!videoData.length ? (<p>Loading...</p>) : (videoData.map((video => {
+        {!videoData.length ? (<div className='loading-spinner white'></div>) : (videoData.map((video => {
           const thumbnail = video.snippet.thumbnails.medium.url
           const title = video.snippet.title
           return <Card

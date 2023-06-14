@@ -18,7 +18,7 @@ export const useGetVideos = () => {
           part: "snippet",
           channelId: "UCFBeNQ_AqyFrkmBFp6EHbpw",
           type: "video",
-          maxResults: 12,
+          maxResults: 16,
           order: "date",
           pageToken: nextPageToken
         }
