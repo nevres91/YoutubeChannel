@@ -60,7 +60,7 @@ const Cards = () => {
         height={'100%'}
         endMessage={
           <div className='end-message'>
-            <h3>No more videos to load!</h3>
+            <p>No more videos to load!</p>
           </div>
         }
 

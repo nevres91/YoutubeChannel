@@ -54,7 +54,7 @@
   height: 100vh;
   width: 100%;
   z-index: 10;
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.2s;
 }
 .hamburger-content ul {
   display: flex;
@@ -721,7 +721,7 @@ footer .linkedin i:hover {
   /* height: 800px; delete later, added extra */
 }
 ::-webkit-scrollbar {
-  background-color: red;
+  background-color: transparent;
   scrollbar-width: none;
 }
 
@@ -744,12 +744,11 @@ footer .linkedin i:hover {
   text-align: center;
   justify-content: center;
   align-items: center;
-  width: 20%;
-  min-width: 200px;
-  margin-bottom: 20px;
-  margin: 20px 40%;
+  width: 100%;
+  /* min-width: 200px; */
+  margin: 0 10px 70px 10px;
   /* border: 2px solid blue; */
-  border-radius: 10px;
+  border-radius: 1ch;
 }
 
 .menu-div {
@@ -856,8 +855,8 @@ footer .linkedin i:hover {
 }
 
 .thumbnail {
-  height: 70%;
-  max-height: 175px;
+  height: 80%;
+  max-height: 190px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 100ms ease-in;
@@ -950,15 +949,15 @@ footer .linkedin i:hover {
 /* content container in 'bikes'page */
 .bikes-content {
   width: 100%;
-  height: 857px;
+  /* height: 887px; */
   position: absolute;
-  top: 10%;
+  top: 6%;
   left: 0;
   display: flex;
   justify-content: center;
   margin: auto;
   color: white;
-  height: 90%;
+  height: 94%;
 }
 
 /* a card that shows selected bike content */
@@ -968,6 +967,10 @@ footer .linkedin i:hover {
   height: 100%;
   width: 70%;
   margin: 0 10px;
+}
+.featured-bike {
+  width: 30%;
+  height: 100%;
 }
 
 /* intro text to the 'bikes' page */
@@ -981,24 +984,26 @@ footer .linkedin i:hover {
 .container-featured {
   width: 100%;
   height: 100%;
-  /* background-color: red; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* border: 3px solid red; */
+  margin-left: 10px;
 }
 
 .container-featured .card-featured {
   position: relative;
-  width: 500px;
+  width: 100%;
   height: 230px;
   padding: 15px;
   background: linear-gradient(60deg, #151516 0%, #1d2229 100%);
   overflow: hidden;
-  margin: 0 15px 15px 15px;
+  margin: 0 10px 15px 10px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(91, 91, 91, 0.3);
   transition: 0.5s ease;
+  /* border: 3px solid blue; */
 }
 
 .container-featured .card-featured h2 {
@@ -1108,7 +1113,7 @@ footer .linkedin i:hover {
 
 .container-featured .card-featured:hover .pic {
   filter: grayscale(0);
-  width: 470px;
+  width: 100%;
 }
 
 .container-featured .card2 .pic {
@@ -1208,15 +1213,16 @@ footer .linkedin i:hover {
 
 @media (max-width: 1340px) {
   .bike-card {
-    height: 500px;
+    /* height: 500px; */
     width: 100%;
   }
-  .container-featured .card-featured {
+  /* .container-featured .card-featured {
     width: 350px;
-  }
+  } */
   .container-featured .card-featured h2 {
-    right: 100px;
-    top: 60px;
+    right: 80px;
+    /* top: 60px; */
+    transform: scale(0.7);
   }
   .image-card {
     height: 90%;
@@ -1224,13 +1230,29 @@ footer .linkedin i:hover {
   }
 }
 @media (max-width: 1150px) {
+  .container-featured .card-featured:hover button {
+    transform: scale(14.5);
+    opacity: 0.5;
+  }
+  .container-featured .card-featured button {
+    right: 20px;
+  }
+  .container-featured .card-featured span {
+    right: 25px;
+  }
+  .container-featured .card-featured h2 {
+    right: 40px;
+    bottom: 10px;
+    /* top: 60px; */
+    transform: scale(0.5);
+  }
   .image-card {
     height: 150px;
     width: 170px;
   }
   .bike-card {
-    height: 400px;
-    width: 100%;
+    /* height: 400px; */
+    /* width: 100%; */
   }
   .images-list {
     overflow-x: hidden;
@@ -1294,7 +1316,7 @@ footer .linkedin i:hover {
   }
   .bike-card {
     height: 85%;
-    width: 95%;
+    width: 99.5%;
     border-radius: 90px 10px;
   }
   .bike-photo {
@@ -1311,14 +1333,24 @@ footer .linkedin i:hover {
     overflow-y: scroll;
     display: grid;
     grid-template-columns: auto auto auto;
+    margin: 2px 2px;
+    width: 100%;
   }
 }
 @media (max-width: 500px) {
+  .bikes-content {
+    top: 5.5%;
+    height: 94.5%;
+  }
+  .bikes-main {
+    margin: 0;
+  }
   .hamburger-button {
     display: inline;
   }
   .navbar {
     justify-content: center;
+    height: 35px;
   }
   .navbar span {
     display: none;
@@ -1351,8 +1383,9 @@ footer .linkedin i:hover {
     margin: 7px;
     height: 215px;
   }
-}
-@media (max-width: 370px) {
+  .landing-cards {
+    width: 100%;
+  }
 }
 @media (max-width: 360px) {
   .navbar span {
@@ -1376,31 +1409,31 @@ footer .linkedin i:hover {
   }
 }
 
-@media (max-width: 950px) and (orientation: landscape) {
+/* @media (max-width: 950px) and (orientation: landscape) {
   .landing-title {
     display: none;
-  }
-  .bikes-content {
+  } */
+/* .bikes-content {
     top: 0.5%;
     height: 99.5%;
-  }
-  .bike-card {
+  } */
+/* .bike-card {
     height: 370px;
     width: 95%;
     border-radius: 80px 20px;
-  }
-  .bike-photo {
+  } */
+/* .bike-photo {
     height: 95%;
-  }
-  .bike-card-container {
+  } */
+/* .bike-card-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 3px;
     height: 100%;
     width: 100%;
-  }
-  .images-list {
+  } */
+/* .images-list {
     width: 30%;
     justify-content: center;
     overflow-x: hidden;
@@ -1409,11 +1442,12 @@ footer .linkedin i:hover {
     grid-template-columns: auto;
     height: 100%;
     margin: 0;
-  }
-  .navbar {
+  } */
+
+/* .navbar {
     display: none;
-  }
-}
+  } */
+/* } */
 @media (max-height: 450px) and (max-width: 1000px) and (orientation: landscape) {
   .cards {
     display: flex;
@@ -1430,13 +1464,22 @@ footer .linkedin i:hover {
   }
   .card {
     justify-content: flex-start;
-    max-width: 98%;
+    /* max-width: 98%; */
     height: 150px;
     width: 100%;
     min-width: 100%;
     display: flex;
     flex-direction: row;
-    transform: translateX(6px);
+    /* transform: translateX(6px); */
+    /* border: 2px solid green; */
+    margin: 8px 0px;
+  }
+  .end-message {
+    /* min-width: inherit; */
+    width: 100%;
+    margin: 0;
+    /* display: none; */
+    margin-bottom: 100px;
   }
   .link-div {
     width: 100%;
@@ -1451,15 +1494,23 @@ footer .linkedin i:hover {
     margin: 0;
   }
   .inner-container {
-    padding-top: 10px;
+    padding-top: 40px;
+  }
+  .search {
+    margin: 0;
+  }
+  .channel-link {
+    transform: scale(0.8);
   }
   .infinite-scroll-component__outerdiv {
     width: 99%;
+    /* border: 2px solid red; */
   }
 
   .infinite-scroll-component {
     display: flex;
     flex-direction: row;
+    /* border: 2px solid blue; */
   }
   .bikes-content {
     height: 100%;

@@ -84,9 +84,9 @@ const Navbar = () => {
       </ul>
       <div className="hamburger-content">
         <ul>
-          <li><Link to='/bikes' ><i className="fa-solid fa-motorcycle fa-lg fa-flip-horizontal"></i><span> Featured bikes</span> </Link></li>
-          <li><Link to='/fixes' ><i className="fa-solid fa-wrench fa-xl"></i><span> Common fixes</span> </Link></li>
-          <li><Link to='/order' ><i className="fa-solid fa-truck-fast fa-lg"></i><span> Order Parts</span> </Link></li>
+          <li><Link to='/bikes' onClick={closeMenu} ><i className="fa-solid fa-motorcycle fa-lg fa-flip-horizontal"></i><span> Featured bikes</span> </Link></li>
+          <li><Link to='/fixes' onClick={closeMenu} ><i className="fa-solid fa-wrench fa-xl"></i><span> Common fixes</span> </Link></li>
+          <li><Link to='/order' onClick={closeMenu} ><i className="fa-solid fa-truck-fast fa-lg"></i><span> Order Parts</span> </Link></li>
           <div className='social'>
             <a href='https://www.facebook.com/nevres.muratovic' className='facebook' target='_blank'><i className="fa-brands fa-square-facebook fa-xl"></i></a>
             <a href='https://github.com/nevres91' className='github' target='_blank'><i className="fa-brands fa-square-github fa-xl"></i></a>
