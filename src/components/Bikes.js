@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import BikeCard from './BikeCard'
 import FeaturedBike from './FeaturedBike'
+import { selectBike } from '../slices/selectedBike'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Bikes = () => {
+  const dispatch = useDispatch();
 
-  const [selectedBike, setSelectedBike] = useState(null);
+  // const [selectedBike, setSelectedBike] = useState(null);
+  const selectedBike = useSelector(state => state.bike.selectedBike)
 
   const handleBikeClick = (bike) => {
-    setSelectedBike(bike);
+    // setSelectedBike(bike);
+    dispatch(selectBike(bike));
     console.log(selectedBike)
   }
 

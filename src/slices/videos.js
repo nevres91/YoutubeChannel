@@ -23,7 +23,9 @@ const videosSlice = createSlice({
     clearVideos: (state) => {
       state.videos = null;
       state.loading = true;
-      state.error = null
+      state.error = null;
+      state.comments = null;
+      state.nextPageToken = null
     },
     fetchComments: (state, action) => {
       state.comments = state.comments ? state.comments.concat(action.payload) : action.payload;

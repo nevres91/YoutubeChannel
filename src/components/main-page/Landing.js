@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadUser } from '../../slices/auth'
 import { useGetVideos } from '../../actions/videos';
 import getComents from '../../actions/coments';
+import { logout } from '../../slices/auth'
+import { signOut } from 'firebase/auth'
+import { clearVideos } from '../../slices/videos'
 
 
 
@@ -23,6 +26,16 @@ const Landing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.videos.videos)
+
+  const [currentUser, setCurrentUser] = useState({ isLoading: true, user: null });
+
+  const logOut = () => {
+    signOut(auth);
+    dispatch(logout());
+    dispatch(clearVideos());
+    setCurrentUser(null)
+    localStorage.removeItem('user');
+  }
 
   useEffect(() => {
 
@@ -62,7 +75,15 @@ const Landing = () => {
             <h2>Hello {user.displayName}</h2>
           </div> */}
           <div className="landing-content">
+
             <div className="landing-sidebar">
+              <div className="navbar-buttons">
+                <ul>
+                  <li><Link to='/'><i className="home icon"></i></Link></li>
+                  <li><Link to="/about"><i className="clipboard outline icon"></i></Link></li>
+                  <li><Link onClick={logOut}><i className="sign-out icon"></i></Link></li>
+                </ul>
+              </div>
               <ul>
                 <li><Link to='/bikes' ><i className="fa-solid fa-motorcycle fa-lg fa-flip-horizontal"></i><span> Featured bikes</span> </Link></li>
                 <li><Link to='/fixes' ><i className="fa-solid fa-wrench fa-xl"></i><span> Common fixes</span> </Link></li>

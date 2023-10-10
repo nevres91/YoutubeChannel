@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { logout } from '../../slices/auth'
 import { clearVideos } from '../../slices/videos'
 import { signOut } from 'firebase/auth'
@@ -9,6 +9,7 @@ import auth from '../../firebase'
 
 
 const Navbar = () => {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const dispatch = useDispatch();
   const logOut = () => {
@@ -76,6 +77,9 @@ const Navbar = () => {
       <h1 className='channel-link'><a href="https://www.youtube.com/@dirton2wheels295/videos" target="_blank" rel='noreferrer'><span><i className="youtube icon"></i></span>DirtOn2wheels</a></h1>
       <ul>
         {/* <li><h3>Hello {currentUser?.user.displayName} </h3></li> */}
+        {location.pathname === '/bikes' && (
+          <li><button className='bike-cards'><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
+        )}
         <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : ''} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
         <li onClick={closeMenu} className={`close-button ${isMenuOpen ? '' : 'hidden'} `} ><button className='hamburger close'><i className="fa-solid fa-xmark fa-lg"></i></button></li>
         <li><Link to='/'><i className="home icon"></i><span>Home</span></Link></li>
