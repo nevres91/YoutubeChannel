@@ -73,15 +73,17 @@ const Navbar = () => {
   }
 
   return currentUser?.user ? (
-    <nav className='navbar'>
+    <nav className={location.pathname === '/order' ? 'navbar order-navbar' : 'navbar'}>
       <h1 className='channel-link'><a href="https://www.youtube.com/@dirton2wheels295/videos" target="_blank" rel='noreferrer'><span><i className="youtube icon"></i></span>DirtOn2wheels</a></h1>
       <ul>
-        {/* <li><h3>Hello {currentUser?.user.displayName} </h3></li> */}
-        {location.pathname === '/bikes' && (
-          <li><button className='bike-cards'><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
-        )}
         <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : ''} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
         <li onClick={closeMenu} className={`close-button ${isMenuOpen ? '' : 'hidden'} `} ><button className='hamburger close'><i className="fa-solid fa-xmark fa-lg"></i></button></li>
+        {location.pathname === '/bikes' && (
+          <li className='bike-cards'><button ><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
+        )}
+        {location.pathname === '/order' && (
+          <li className='parts-button'><button ><i className="fa-solid fa-screwdriver-wrench"></i><span> Description</span></button></li>
+        )}
         <li><Link to='/'><i className="home icon"></i><span>Home</span></Link></li>
         <li><Link to="/about"><i className="clipboard outline icon"></i><span>About</span></Link></li>
         <li><Link onClick={logOut} href="/#"><i className="sign-out icon"></i><span>Logout</span></Link></li>
