@@ -76,7 +76,7 @@ const Navbar = () => {
     <nav className={location.pathname === '/order' ? 'navbar order-navbar' : 'navbar'}>
       <h1 className='channel-link'><a href="https://www.youtube.com/@dirton2wheels295/videos" target="_blank" rel='noreferrer'><span><i className="youtube icon"></i></span>DirtOn2wheels</a></h1>
       <ul>
-        <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : ''} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
+        <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : (location.pathname === '/landing' ? '' : 'always')} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
         <li onClick={closeMenu} className={`close-button ${isMenuOpen ? '' : 'hidden'} `} ><button className='hamburger close'><i className="fa-solid fa-xmark fa-lg"></i></button></li>
         {location.pathname === '/bikes' && (
           <li className='bike-cards'><button ><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
