@@ -162,6 +162,14 @@
   font-family: "Poppins", sans-serif;
   transition: all ease-in-out 0.1s;
 }
+.order-navbar .hamburger-content ul li i,
+.order-navbar .hamburger-content ul li span {
+  color: rgb(152, 151, 151) !important;
+}
+.order-navbar .hamburger-content ul li:hover i,
+.order-navbar .hamburger-content ul li:hover span {
+  color: rgb(240, 240, 240) !important;
+}
 .order-navbar ul li i {
   color: rgb(41, 40, 40);
 }
@@ -578,6 +586,9 @@ h2 {
   max-width: 1750px;
   /* background-color: #bf9052; */
 }
+.infinite-scroll-component::-webkit-scrollbar {
+  display: none;
+}
 .infinite-scroll-component__outerdiv {
   /* background-color: #90a5f8; */
   height: 100%;
@@ -695,7 +706,7 @@ footer .linkedin i:hover {
     max-width: 50px;
   }
 }
-@media (max-width: 883px) {
+/* @media (max-width: 883px) {
   .landing-sidebar {
     position: relative;
   }
@@ -711,7 +722,7 @@ footer .linkedin i:hover {
     bottom: 0;
     text-align: left;
   }
-}
+} */
 @media (max-width: 630px) {
   .landing-sidebar ul li span {
     display: none;
@@ -916,10 +927,10 @@ footer .linkedin i:hover {
 }
 @media (max-width: 883px) {
   .card {
-    flex-basis: 100%;
+    flex-basis: 40%;
   }
 }
-@media (max-width: 555px) {
+@media (max-width: 650px) {
   .card {
     flex-basis: 100%;
   }
@@ -1599,7 +1610,7 @@ footer .linkedin i:hover {
     display: flex;
     flex-direction: row;
   }
-  .navbar {
+  .landing-navbar {
     display: none;
   }
   .navbar-buttons {
@@ -1932,7 +1943,7 @@ footer .linkedin i:hover {
     padding: 5px;
   }
 }
-@media (max-height: 450px) and (max-width: 630px) and (orientation: landscape) {
+@media (max-height: 450px) and (max-width: 1000px) and (orientation: landscape) {
   .about-text {
     height: 93%;
     margin: 20px 5px 5px 10px;
@@ -1941,7 +1952,7 @@ footer .linkedin i:hover {
     color: rgb(196, 196, 196);
     font-size: 2rem;
     text-align: center;
-    padding: 20px 0 0;
+    padding: 20px 5px;
     border-radius: 50px;
     background-color: rgba(17, 15, 116, 0.5);
     overflow-y: auto;
@@ -2241,6 +2252,9 @@ footer .linkedin i:hover {
 @media (max-height: 500px) and (min-width: 700px) {
   .order-content-1 {
     overflow: auto;
+  }
+  .order-content-1::-webkit-scrollbar {
+    display: none;
   }
   .sellers li {
     margin: 15px;

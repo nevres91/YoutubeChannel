@@ -73,7 +73,7 @@ const Navbar = () => {
   }
 
   return currentUser?.user ? (
-    <nav className={location.pathname === '/order' ? 'navbar order-navbar' : 'navbar'}>
+    <nav className={location.pathname === '/order' ? 'navbar order-navbar' : location.pathname === '/landing' ? 'navbar landing-navbar' : 'navbar'}>
       <h1 className='channel-link'><a href="https://www.youtube.com/@dirton2wheels295/videos" target="_blank" rel='noreferrer'><span><i className="youtube icon"></i></span>DirtOn2wheels</a></h1>
       <ul>
         <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : (location.pathname === '/landing' ? '' : 'always')} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
