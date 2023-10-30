@@ -14,6 +14,9 @@ import { Link } from 'react-router-dom';
 import { clearVideos } from '../slices/videos';
 import { signOut } from 'firebase/auth';
 import { logout } from '../slices/auth';
+import bikePhotos from './BikePhotos';
+import selectedBikePhoto from '../slices/selectedBikePhoto';
+import { selectBikePhoto } from '../slices/selectedBikePhoto';
 
 
 const BikeCard = ({ selectedBike }) => {
@@ -26,7 +29,7 @@ const BikeCard = ({ selectedBike }) => {
     localStorage.removeItem('user');
   }
 
-
+  const photo = useSelector((state) => state.bikePhoto.selectedPhoto)
   const navigate = useNavigate();
   // useEffect(() => {
   //   console.log('user object here')
@@ -63,6 +66,10 @@ const BikeCard = ({ selectedBike }) => {
     }
   }, []);
 
+  const selectedPhoto = (photo) => {
+    dispatch(selectBikePhoto(photo));
+  }
+
   const scrollContainer = document.querySelector('.images-list');
   var cumulativeDelta = 0;
   // const scrollIncrement = 100;
@@ -89,14 +96,14 @@ const BikeCard = ({ selectedBike }) => {
             selectedBike === 'cr' ? 'HONDA' :
               selectedBike === 'ktm' ? 'KTM' : 'YAMAHA'}
           </h1>
-          <div className="navbar-bike-buttons">
+          {/* <div className="navbar-bike-buttons">
             <ul>
               <li><Link className='bike-button'><i className="fa-solid fa-motorcycle fa-lg"></i></Link></li>
               <li><Link to='/'><i className="home icon"></i></Link></li>
               <li><Link to="/about"><i className="clipboard outline icon"></i></Link></li>
               <li><Link onClick={logOut} ><i className="sign-out icon"></i></Link></li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <div className="bike-content">
           <div className='bike-content-2'>
@@ -110,9 +117,10 @@ const BikeCard = ({ selectedBike }) => {
                     selectedBike === 'ktm' ? '0px 0px 123px 39px rgba(255, 123, 0, 0.75)' : '0px 0px 123px 39px rgba(0, 34, 255, 0.75)'
             }}>
               <img src={
-                selectedBike === 'ktm' ? ktm :
-                  selectedBike === 'dt' ? dt :
-                    selectedBike === 'cr' ? cr : yz}
+                !photo && selectedBike === 'ktm' ? ktm :
+                  !photo && selectedBike === 'dt' ? dt :
+                    !photo && selectedBike === 'cr' ? cr :
+                      !photo && selectedBike === 'yz' ? yz : photo}
                 alt="Loading" />
               <div className="bike-title">
               </div>
@@ -132,59 +140,34 @@ const BikeCard = ({ selectedBike }) => {
                   selectedBike === 'dt' ? 'rgba(245, 253, 136, 0.2)' :
                     selectedBike === 'ktm' ? 'rgba(255, 171, 68, 0.2)' : 'rgba(120, 125, 255, 0.2)'
             }}>
+            {selectedBike === 'cr' ? (bikePhotos.CrPhotos.map((photo) => (
+              <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                <img src={photo.link} />
+              </div>
 
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
+            ))) :
+              selectedBike === 'dt' ? (bikePhotos.DtPhotos.map((photo) => (
+                <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                  <img src={photo.link} />
+                </div>
+
+              )))
+
+                :
+                selectedBike === 'ktm' ? (bikePhotos.KtmPhotos.map((photo) => (
+                  <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                    <img src={photo.link} />
+                  </div>
+
+                )))
+                  :
+                  (bikePhotos.YzPhotos.map((photo) => (
+                    <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                      <img src={photo.link} />
+                    </div>
+
+                  )))
+            }
           </div>
 
         </div>
@@ -206,59 +189,34 @@ const BikeCard = ({ selectedBike }) => {
               selectedBike === 'dt' ? 'rgba(245, 253, 136, 0.2)' :
                 selectedBike === 'ktm' ? 'rgba(255, 171, 68, 0.2)' : 'rgba(120, 125, 255, 0.2)'
         }}>
+        {selectedBike === 'cr' ? (bikePhotos.CrPhotos.map((photo) => (
+          <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+            <img src={photo.link} />
+          </div>
 
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
-        <ImageCard />
+        ))) :
+          selectedBike === 'dt' ? (bikePhotos.DtPhotos.map((photo) => (
+            <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+              <img src={photo.link} />
+            </div>
+
+          )))
+
+            :
+            selectedBike === 'ktm' ? (bikePhotos.KtmPhotos.map((photo) => (
+              <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                <img src={photo.link} />
+              </div>
+
+            )))
+              :
+              (bikePhotos.YzPhotos.map((photo) => (
+                <div onClick={() => selectedPhoto(photo.link)} className="image-card">
+                  <img src={photo.link} />
+                </div>
+
+              )))
+        }
       </div>
 
     </div>

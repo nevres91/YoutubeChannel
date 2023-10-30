@@ -32,6 +32,10 @@ const Navbar = () => {
     setIsMenuOpen(true)
     hamburger.style.clipPath = 'circle(200% at 0% 0%)'
   }
+  const openBikesMenu = () => {
+    const bikesMenu = document.querySelector('.chose-bike')
+    bikesMenu.style.transform = 'TranslateY(0)'
+  }
 
   const [currentUser, setCurrentUser] = useState({ isLoading: true, user: null });
 
@@ -79,7 +83,7 @@ const Navbar = () => {
         <li onClick={openMenu} className={`hamburger-button ${isMenuOpen ? 'hidden' : (location.pathname === '/landing' ? '' : 'always')} `}><button className='hamburger'><i className="fa-solid fa-bars "></i></button></li>
         <li onClick={closeMenu} className={`close-button ${isMenuOpen ? '' : 'hidden'} `} ><button className='hamburger close'><i className="fa-solid fa-xmark fa-lg"></i></button></li>
         {location.pathname === '/bikes' && (
-          <li className='bike-cards'><button ><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
+          <li onClick={openBikesMenu} className='bike-cards'><button ><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
         )}
         {location.pathname === '/order' && (
           <li className='parts-button'><button ><i className="fa-solid fa-screwdriver-wrench"></i><span> Description</span></button></li>
