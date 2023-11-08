@@ -13,8 +13,8 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
     dispatch(googleLogin());
   }
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: 'test1@gmail.com',
+    password: '111111'
   });
 
   const { email, password } = formData;

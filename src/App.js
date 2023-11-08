@@ -12,6 +12,7 @@ import Bikes from './components/Bikes';
 import About from './components/About';
 import Order from './components/Order';
 import CommonFixes from './components/CommonFixes';
+import PartsLegend from './components/PartsLegend';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/about' element={<About />} />
           <Route exact path='/order' element={<Order />} />
           <Route exact path='/fixes' element={<CommonFixes />} />
+          <Route exact path='/legend' element={<PartsLegend />} />
           <Route exact path='/protected' element={<PrivateRoute component={Protected} />} />
         </Routes>
       </Fragment>

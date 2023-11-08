@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 import maciag from '../img/maciag.jpg'
 import mx from '../img/24mx.jpg'
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,7 @@ import auth from '../firebase';
 import { logout } from '../slices/auth';
 import { clearVideos } from '../slices/videos';
 import { loadUser } from '../slices/auth';
+import PartsLegend from './PartsLegend';
 
 const Order = () => {
 
@@ -75,7 +76,7 @@ const Order = () => {
         <div className="order-content-2"></div>
         <div className="order-content-3">
           <p>Here you can order any part for your motorcycle from various websites, no matter what motorcycle you have, dig around until you find what suits you best.</p>
-          <div className="bike-image"></div>
+          <div onClick={() => navigate('/legend')} className="bike-image"></div>
         </div>
       </div>
       <div className="order-content-4">
