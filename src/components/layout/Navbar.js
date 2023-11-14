@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../../slices/auth'
 import { clearVideos } from '../../slices/videos'
 import { signOut } from 'firebase/auth'
@@ -9,7 +9,9 @@ import auth from '../../firebase'
 
 
 const Navbar = () => {
+
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const dispatch = useDispatch();
   const logOut = () => {
@@ -38,6 +40,7 @@ const Navbar = () => {
   }
 
   const [currentUser, setCurrentUser] = useState({ isLoading: true, user: null });
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -86,7 +89,7 @@ const Navbar = () => {
           <li onClick={openBikesMenu} className='bike-cards'><button ><i className="fa-solid fa-motorcycle fa-lg"></i><span> Bikes</span></button></li>
         )}
         {location.pathname === '/order' && (
-          <li className='parts-button'><button ><i className="fa-solid fa-screwdriver-wrench"></i><span> Description</span></button></li>
+          <li onClick={() => navigate('/legend')} className='parts-button'><button ><i className="fa-solid fa-screwdriver-wrench"></i><span> Description</span></button></li>
         )}
         <li><Link to='/'><i className="home icon"></i><span>Home</span></Link></li>
         <li><Link to="/about"><i className="clipboard outline icon"></i><span>About</span></Link></li>

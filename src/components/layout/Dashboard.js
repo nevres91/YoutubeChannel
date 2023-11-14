@@ -53,21 +53,14 @@ const Dashboard = () => {
         }
         localStorage.setItem('user', JSON.stringify(user));
         navigate('/landing');
-      } else {
-        console.log('failed')
       }
 
       setLoading(false);
     }
     // Sign in with Email and Password
     if (user) {
-      console.log('User is logged in')
-      console.log(user)
       navigate('/landing')
-      console.log('navigated when logged')
     } else {
-      console.log('User is not logged in')
-      console.log('navigated if not logged')
       navigate('/')
     }
     redirectresults();

@@ -16,6 +16,7 @@ const Cards = () => {
   const statistics = useSelector(state => state.videos.comments) // State for fetched video statistics for each video. (views, comments, etc)
   const [videoData, setVideoData] = useState([])  //Array of combined states (videos + statistics)
   const [hasMore, setHasMore] = useState(true);
+
   // const [pageToken, setPageToken] = useState(nextPageToken);
 
 
@@ -35,19 +36,12 @@ const Cards = () => {
       setVideoData(updatedData);
       // console.log(statistics[0].contentDetails.duration)
     }
-  }, [videos, statistics])
-
-
-
+  }, [videos, statistics,])
 
   const fetchNextVideos = () => {
     getVideos(nextPageToken);
     console.log(nextPageToken)
   }
-
-
-
-
 
   return (
     <div className='cards'>
