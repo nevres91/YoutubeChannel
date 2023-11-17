@@ -7,6 +7,10 @@ import { googleLogin } from '../../slices/auth';
 
 
 const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
+  const [userAlert, setUserAlert] = useState(false);
+  const [passwordAlert, setPasswordAlert] = useState(false);
+  const [noEmail, setNoEmail] = useState(false);
+  const [noPassword, setNoPassword] = useState(false);
   const dispatch = useDispatch();
   // Log in with GOOGLE
   const loginWithGoogle = () => {
@@ -33,7 +37,28 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
         setUserDataInStorage(userCredential);
         navigate('/landing');
       }).catch((error) => {
-        console.log(error)
+        if (error.code === 'auth/user-not-found') {
+          setUserAlert(true)
+          setTimeout(() => {
+            setUserAlert(false)
+          }, 4000);
+        } else if (error.code === 'auth/wrong-password') {
+          setPasswordAlert(true)
+          setTimeout(() => {
+            setPasswordAlert(false)
+          }, 4000);
+        } else if (error.code === 'auth/invalid-email') {
+          setNoEmail(true)
+          setTimeout(() => {
+            setNoEmail(false)
+          }, 4000);
+        } else if (error.code === 'auth/internal-error') {
+          setNoPassword(true)
+          setTimeout(() => {
+            setNoPassword(false)
+          }, 4000);
+        }
+        console.log(error.code)
       })
   }
 
@@ -62,6 +87,17 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
           value={password}
           onChange={e => onChange(e)}
         />
+        {userAlert ? (
+          <div className="alert">User does not exist!</div>
+        ) : passwordAlert ? (
+          <div className="alert">Wrong password entered!</div>
+        ) : noEmail ? (
+          <div className="alert">Please enter valid E-mail adress!</div>
+
+        ) : noPassword ? (
+          <div className="alert">Please enter Password!</div>
+
+        ) : ''}
         <input type="submit" className='btn' value='Login' onFocus={backgroundChange} onBlur={backgroundRevert} />
         <div className="google-div">
           <p>Or log in with</p>
@@ -77,6 +113,8 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
 
           </div> */}
         </div>
+
+
         <div className="question">
           <p>Not a member?</p>  <div className='switch' onClick={registerShow}>Register</div>
         </div>

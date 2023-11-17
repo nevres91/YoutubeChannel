@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { getRedirectResult } from 'firebase/auth';
 import Spinner from '../Spinner';
-import NextPageSpinner from '../NextPageSpinner';
 
 const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem('user'));

@@ -2,11 +2,18 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import React, { Fragment, useState } from 'react'
 import auth from '../../firebase';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Functions passed in as props in Dashboard!
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [weakPassword, setWeakPassword] = useState(false);
+  const [noPassword, setNoPassword] = useState(false);
+  const [passwordsNoMatch, setPasswordsNoMatch] = useState(false);
+  const [emailInUse, setEmailInUse] = useState(false);
+  const [noName, setNoName] = useState(false);
+  const [allFields, setAllFields] = useState(false);
 
-  const dispatch = useDispatch();
+
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -21,17 +28,76 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Func
 
   const signUp = e => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        updateProfile(auth.currentUser, {
-          displayName: name
+    if (name && email && password && password2) {
+      if (password !== password2) {
+        setPasswordsNoMatch(true)
+        setTimeout(() => {
+          setPasswordsNoMatch(false)
+        }, 4000);
+        return false
+      } if (!name) {
+        setNoName(true)
+        setTimeout(() => {
+          setNoName(false)
+        }, 4000);
+        return false
+      } if (!email) {
+        setInvalidEmail(true)
+        setTimeout(() => {
+          setInvalidEmail(false)
+        }, 4000);
+        return false
+      }
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+          updateProfile(auth.currentUser, {
+            displayName: name
+          })
+          console.log(userCredentials)
+          localStorage.setItem('user', JSON.stringify(userCredentials))
+          navigate('/landing');
+        }).catch((error) => {
+          if (name === '') {
+            console.log('name cannot be empty')
+            setNoName(true)
+            setTimeout(() => {
+              setNoName(false)
+            }, 4000);
+            return false
+          } else if (error.code === 'auth/invalid-email') {
+            setInvalidEmail(true)
+            setTimeout(() => {
+              setInvalidEmail(false)
+            }, 4000);
+            return false
+          } else if (error.code === 'auth/weak-password') {
+            setWeakPassword(true)
+            setTimeout(() => {
+              setWeakPassword(false)
+            }, 4000);
+            return false
+          } else if (error.code === 'auth/internal-error') {
+            setNoPassword(true)
+            setTimeout(() => {
+              setNoPassword(false)
+            }, 4000);
+            return false
+          } else if (error.code === 'auth/email-already-in-use') {
+            setEmailInUse(true)
+            setTimeout(() => {
+              setEmailInUse(false)
+            }, 4000);
+            return false
+          }
+          console.log(error.code)
         })
-        console.log(userCredentials)
-        localStorage.setItem('user', JSON.stringify(userCredentials))
-        navigate('/landing');
-      }).catch((error) => {
-        console.log(error)
-      })
+    } else {
+      setAllFields(true)
+      setTimeout(() => {
+        setAllFields(false)
+      }, 4000);
+      return false
+    }
   }
 
   return (
@@ -46,6 +112,7 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Func
           onBlur={backgroundRevert}
           value={name}
           onChange={e => onChange(e)}
+
         />
         <input
           className='input'
@@ -80,6 +147,27 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Func
           value={password2}
           onChange={e => onChange(e)}
         />
+        {invalidEmail ? (
+          <div className="alert">Please enter a valid E-mail adress!</div>
+        ) : weakPassword ? (
+          <div className="alert">Password must be atleast 6 characters!</div>
+
+        ) : noPassword ? (
+          <div className="alert">Password cannot be empty!</div>
+
+        ) : emailInUse ? (
+          <div className="alert">Email already in use!</div>
+
+        ) : passwordsNoMatch ? (
+          <div className="alert">Passwords must match!</div>
+
+        ) : noName ? (
+          <div className="alert">Please enter your name!</div>
+
+        ) : allFields ? (
+          <div className="alert">All fields must be filled</div>
+
+        ) : ''}
         <input type="submit" className='btn' value='Register' onFocus={backgroundChange} onBlur={backgroundRevert} />
         <div className="question">
           <p>Already a member? </p> <div className='switch' onClick={loginShow}>Login</div>
