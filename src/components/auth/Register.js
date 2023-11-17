@@ -57,7 +57,6 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Func
           navigate('/landing');
         }).catch((error) => {
           if (name === '') {
-            console.log('name cannot be empty')
             setNoName(true)
             setTimeout(() => {
               setNoName(false)

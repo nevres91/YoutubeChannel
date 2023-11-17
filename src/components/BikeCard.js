@@ -1,54 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import motor from '../img/5.jpg';
+import React, { useEffect } from 'react'
 import dt from '../img/dt.jpeg';
 import cr from '../img/cr.jpg';
 import yz from '../img/yz.jpg';
 import ktm from '../img/ktm.jpeg';
-import ImageCard from './ImageCard';
 import auth from '../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadUser } from '../slices/auth';
 import { loginBike } from '../slices/selectedBike';
-import { Link } from 'react-router-dom';
-import { clearVideos } from '../slices/videos';
-import { signOut } from 'firebase/auth';
-import { logout } from '../slices/auth';
 import bikePhotos from './BikePhotos';
-import selectedBikePhoto from '../slices/selectedBikePhoto';
 import { selectBikePhoto } from '../slices/selectedBikePhoto';
 
 
 const BikeCard = ({ selectedBike }) => {
 
-
-  const logOut = () => {
-    signOut(auth);
-    dispatch(logout());
-    dispatch(clearVideos());
-    localStorage.removeItem('user');
-  }
-
   const photo = useSelector((state) => state.bikePhoto.selectedPhoto)
   const navigate = useNavigate();
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
   const dispatch = useDispatch();
   useEffect(() => {
 
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         await user.reload();
-        setUser(user);
         dispatch(loadUser({
           dispayName: user.displayName,
           email: user.email
         }))
         dispatch(loginBike('yz'))
       } else {
-        setUser(null);
         localStorage.removeItem("user");
         navigate('/landing')
       }
@@ -63,22 +42,6 @@ const BikeCard = ({ selectedBike }) => {
     dispatch(selectBikePhoto(photo));
   }
 
-  const scrollContainer = document.querySelector('.images-list');
-  var cumulativeDelta = 0;
-  // const scrollIncrement = 100;
-
-  // if (scrollContainer) {
-  //   scrollContainer.addEventListener('wheel', (e) => {
-  //     e.preventDefault();
-  //     cumulativeDelta += e.deltaY;
-  //     // const direction = e.deltaY > 0 ? 1 : -1;
-  //     // const scrollDistance = direction * scrollIncrement;
-  //     // const currentPosition = scrollContainer.scrollLeft;
-  //     // const targetPosition = currentPosition + scrollDistance;
-  //     scrollContainer.scrollLeft += cumulativeDelta * 2;
-  //     cumulativeDelta = 0;
-  //   })
-  // }
 
 
   return (
@@ -135,13 +98,13 @@ const BikeCard = ({ selectedBike }) => {
             }}>
             {selectedBike === 'cr' ? (bikePhotos.CrPhotos.map((photo) => (
               <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                <img src={photo.link} />
+                <img src={photo.link} alt='' />
               </div>
 
             ))) :
               selectedBike === 'dt' ? (bikePhotos.DtPhotos.map((photo) => (
                 <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                  <img src={photo.link} />
+                  <img src={photo.link} alt='' />
                 </div>
 
               )))
@@ -149,14 +112,14 @@ const BikeCard = ({ selectedBike }) => {
                 :
                 selectedBike === 'ktm' ? (bikePhotos.KtmPhotos.map((photo) => (
                   <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                    <img src={photo.link} />
+                    <img src={photo.link} alt='' />
                   </div>
 
                 )))
                   :
                   (bikePhotos.YzPhotos.map((photo) => (
                     <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                      <img src={photo.link} />
+                      <img src={photo.link} alt='' />
                     </div>
 
                   )))
@@ -184,13 +147,13 @@ const BikeCard = ({ selectedBike }) => {
         }}>
         {selectedBike === 'cr' ? (bikePhotos.CrPhotos.map((photo) => (
           <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-            <img src={photo.link} />
+            <img src={photo.link} alt='' />
           </div>
 
         ))) :
           selectedBike === 'dt' ? (bikePhotos.DtPhotos.map((photo) => (
             <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-              <img src={photo.link} />
+              <img src={photo.link} alt='' />
             </div>
 
           )))
@@ -198,14 +161,14 @@ const BikeCard = ({ selectedBike }) => {
             :
             selectedBike === 'ktm' ? (bikePhotos.KtmPhotos.map((photo) => (
               <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                <img src={photo.link} />
+                <img src={photo.link} alt='' />
               </div>
 
             )))
               :
               (bikePhotos.YzPhotos.map((photo) => (
                 <div onClick={() => selectedPhoto(photo.link)} className="image-card">
-                  <img src={photo.link} />
+                  <img src={photo.link} alt='' />
                 </div>
 
               )))
