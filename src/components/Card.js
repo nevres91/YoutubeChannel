@@ -6,9 +6,6 @@ const Card = ({ videoId, thumbnail, title, viewCount, commentCount, likeCount, d
   const formatedDuration = moment.duration(duration).minutes() + ":" + moment.duration(duration).seconds().toString().padStart(2, "0");
   const showUser = () => {
     const user = auth.currentUser;
-    console.log(user.displayName)
-    console.log(user)
-    console.log(user.uid)
   }
 
   return (

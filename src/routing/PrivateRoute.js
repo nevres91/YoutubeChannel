@@ -20,7 +20,6 @@ const PrivateRoute = ({
   const user = useSelector(state => state.auth.user);
   const navigate = useNavigate();
   if (user) {
-    console.log(user)
     return <Component />;
   }
   return navigate('/');

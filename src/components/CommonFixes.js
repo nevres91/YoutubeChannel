@@ -25,8 +25,6 @@ const CommonFixes = () => {
     if (contentRef.current) {
       const computedStyle = window.getComputedStyle(contentRef.current);
       if (computedStyle.position === 'absolute') {
-
-        console.log('done')
         contentRef.current.style.left = '0px';
       }
     }

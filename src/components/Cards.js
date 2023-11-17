@@ -34,13 +34,11 @@ const Cards = () => {
         }
       })
       setVideoData(updatedData);
-      // console.log(statistics[0].contentDetails.duration)
     }
   }, [videos, statistics,])
 
   const fetchNextVideos = () => {
     getVideos(nextPageToken);
-    console.log(nextPageToken)
   }
 
   return (

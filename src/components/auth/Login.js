@@ -33,7 +33,6 @@ const Login = ({ backgroundChange, backgroundRevert, registerShow }) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user);
         setUserDataInStorage(userCredential);
         navigate('/landing');
       }).catch((error) => {

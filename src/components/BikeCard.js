@@ -31,13 +31,6 @@ const BikeCard = ({ selectedBike }) => {
 
   const photo = useSelector((state) => state.bikePhoto.selectedPhoto)
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   console.log('user object here')
-  //   console.log(user)
-  //   if (!user) {
-  //     navigate('/landing')
-  //   }
-  // }, [])
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;

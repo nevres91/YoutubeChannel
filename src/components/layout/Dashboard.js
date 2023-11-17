@@ -42,7 +42,6 @@ const Dashboard = () => {
       const result = await getRedirectResult(auth);
       if (result) {
         const user = result.user;
-        console.log(user)
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const profile = {

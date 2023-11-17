@@ -53,7 +53,6 @@ const Register = ({ backgroundChange, backgroundRevert, loginShow }) => { //Func
           updateProfile(auth.currentUser, {
             displayName: name
           })
-          console.log(userCredentials)
           localStorage.setItem('user', JSON.stringify(userCredentials))
           navigate('/landing');
         }).catch((error) => {

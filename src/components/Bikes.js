@@ -16,7 +16,6 @@ const Bikes = () => {
     // setSelectedBike(bike);
     dispatch(selectBike(bike));
     dispatch(clearPhoto());
-    console.log(selectedBike)
   }
   const choseBike = (bike) => {
     const bikesMenu = document.querySelector('.chose-bike')
@@ -24,7 +23,6 @@ const Bikes = () => {
     // setSelectedBike(bike);
     dispatch(selectBike(bike));
     dispatch(clearPhoto());
-    console.log(selectedBike)
   }
 
 
