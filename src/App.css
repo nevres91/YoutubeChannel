@@ -2612,7 +2612,7 @@ footer .linkedin i:hover {
     rgba(48, 238, 226, 0.1) 68%,
     rgba(255, 25, 25, 0.1) 98%
   );
-  animation: gradient 50s ease infinite;
+  /* animation: gradient 50s ease infinite; */
   background-size: 400% 400%;
   background-attachment: fixed;
 
@@ -2626,7 +2626,7 @@ footer .linkedin i:hover {
   caret-color: transparent;
 }
 
-@keyframes gradient {
+/* @keyframes gradient {
   0% {
     background-position: 0% 0%;
   }
@@ -2636,10 +2636,10 @@ footer .linkedin i:hover {
   100% {
     background-position: 0% 0%;
   }
-}
+} */
 
 .fixes-bg {
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
 
   /* background: red; */
   display: flex;
