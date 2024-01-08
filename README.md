@@ -1,3 +1,12 @@
+# My YouTube Channel Webpage
+
+Welcome to the GitHub repository for my YouTube channel webpage! This project is built using Javascript, React,  and Redux Toolkit to showcase my YouTube videos.
+
+# Demo
+
+Check out the live demo [here](https://master--eclectic-custard-9d5d22.netlify.app/).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
